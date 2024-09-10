@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 
 #include <netinet/in.h>
 
@@ -24,7 +24,8 @@ int main() {
   server_address.sin_addr.s_addr = INADDR_ANY; // 0.0.0.0
 
   // bind the socket to our specified IP and port
-  bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+  bind(server_socket, (struct sockaddr *)&server_address,
+       sizeof(server_address));
 
   // listen for connections
   listen(server_socket, 5); // 5 is the maximum number of connections

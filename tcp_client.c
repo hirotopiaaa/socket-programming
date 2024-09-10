@@ -1,11 +1,10 @@
-// Client Socket Workflow: 
+// Client Socket Workflow:
 // socket[] -> connect[] -> recv[] -> close[]
 
 #include <stdio.h>
-#include <stdlib.h>
 
-#include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/types.h>
 
 #include <netinet/in.h>
 
@@ -21,7 +20,9 @@ int main() {
   server_address.sin_addr.s_addr = INADDR_ANY; // 0.0.0.0
 
   // connect to the server
-  int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+  int connection_status =
+      connect(network_socket, (struct sockaddr *)&server_address,
+              sizeof(server_address));
   // check for error with the connection
   // 0 is the value for success
   // -1 is the value for error
@@ -32,7 +33,6 @@ int main() {
   // receive data from the server
   char server_response[256];
   recv(network_socket, &server_response, sizeof(server_response), 0);
-
 
   // print out the server's response
   printf("The server sent the data: %s\n", server_response);
